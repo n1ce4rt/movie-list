@@ -16,11 +16,11 @@ export const ErrorPage: React.FC =() => {
   return (
     <Container maxWidth="sm" sx={{display: 'flex', flexDirection: 'column',alignItems: 'center'}}>
       <Typography variant="h1" gutterBottom textAlign={'center'}>
-                Oops!
+        Oops!
       </Typography>
       <Typography variant="h3" gutterBottom textAlign={'center'}>
-                Something went wrong!<br/>
-                Please try again!
+        Something went wrong!<br/>
+        Please try again!
       </Typography>
       <Button type="button" variant={'contained'} onClick={onClickHandler}>Try again</Button>
     </Container>
