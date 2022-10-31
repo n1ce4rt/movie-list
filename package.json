@@ -1,7 +1,7 @@
 {
   "name": "film-list",
   "version": "0.1.0",
-  "homepage": "https://n1ce4rt.github.io/login",
+  "homepage": "https://n1ce4rt.github.io/movie-list/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
