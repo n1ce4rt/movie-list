@@ -16,9 +16,7 @@ function App() {
           <Route index element={<HomePage/>}/>
           <Route path="news" element={<News/>}/>
           <Route path={'login'} element={<Login/>} />
-
           <Route path={'films/page/:page'} element={<FilmsList/>}/>
-
           <Route path={'film/:id'} element={<Film/>}/>
           <Route path={'*'} element={<NotFoundPage/>}/>
         </Route>
