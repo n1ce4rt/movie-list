@@ -55,8 +55,8 @@ export const fetchFilm = createAsyncThunk<movieType, number, {rejectValue: strin
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
-  }
-)
+  },
+);
 
 function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
@@ -65,6 +65,9 @@ const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
+    setPage(state, action: PayloadAction<number>) {
+      state.page = action.payload;
+    },
     resetMovie(state) {
       state.movie = null;
     },
@@ -102,5 +105,5 @@ const filmsSlice = createSlice({
   },
 });
 
-export const  { setError, resetMovie } = filmsSlice.actions;
+export const  { setError, resetMovie, setPage } = filmsSlice.actions;
 export default filmsSlice.reducer;

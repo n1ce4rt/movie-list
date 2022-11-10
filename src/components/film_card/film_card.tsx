@@ -1,12 +1,8 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import {Card, CardContent, CardMedia, Typography, Stack} from '@mui/material'
 import { useState, useEffect } from 'react';
-import { useMatch, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../hooks/hooks';
-import { fetchFilm } from '../reducers/films_slice';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export interface filmType {
@@ -22,7 +18,6 @@ export interface filmType {
 
 export const FilmCard :React.FC<filmType> =({ id, img, alt, title, year, genres }) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const [imgLoad, setImgLoad] = useState(true);
   const [imgError, setImgError] = useState(false);
   const [fullTitle, setFullTitle] = useState(false);
@@ -50,7 +45,7 @@ export const FilmCard :React.FC<filmType> =({ id, img, alt, title, year, genres 
 
   return (
     <Card 
-      sx={{ maxWidth: '270px', margin: '0 auto', cursor: 'pointer' }}
+      sx={{ maxWidth: '270px', margin: '0 auto', cursor: 'pointer'}}
       onClick={() => {
         navigate(`/film/${id}`);
       }}
@@ -61,24 +56,18 @@ export const FilmCard :React.FC<filmType> =({ id, img, alt, title, year, genres 
         image={isImgLoad()}
         alt={alt}
       />
-      <CardContent sx={{minHeight: '130px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center'}}>
-        <Typography gutterBottom variant="caption" component="div">
+      <CardContent sx={{height: 'auto', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'center', padding: '0px'}}>
+        <Typography gutterBottom variant="subtitle1" component="div">
           {year}
         </Typography>
-        <Typography gutterBottom variant="h6" component="div"
-          sx={{cursor: title.length > 42 ? 'pointer' : ''}}
-          onClick={() => setFullTitle(!fullTitle)}
-        >
-          {fullTitle ? title: title.length >= 42 ? title.slice(0,42) + '...': title}
+        <Typography gutterBottom variant="h6" component="div">
+          {title}
         </Typography>
         <Typography gutterBottom variant="caption" component="div">
-          {genres.slice(0,4).join(', ')}
+          {genres?.slice(0,4).join(', ')}
         </Typography>
+
       </CardContent>
-      {/* <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
     </Card>
    
   );

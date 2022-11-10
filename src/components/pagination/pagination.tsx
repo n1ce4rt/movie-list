@@ -1,8 +1,9 @@
 import * as React from 'react';
-import{ Pagination, PaginationItem } from '@mui/material';
+import{ Pagination } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import { useNavigate, NavLink } from 'react-router-dom';
-import { useAppSelector } from '../hooks/hooks';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { setPage } from '../reducers/films_slice';
 
 
 
@@ -21,6 +22,7 @@ export const PaginationButtons: React.FC = () => {
         count={movieCount? Math.ceil(movieCount / 8) : 1}
         onChange={(_, page: number) => {
           navigate(`/films/page/${page}`);
+          
 
         }}
 

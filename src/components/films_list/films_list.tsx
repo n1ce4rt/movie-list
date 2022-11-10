@@ -3,25 +3,29 @@ import { useParams } from 'react-router-dom';
 import Grid from '@mui/material/Unstable_Grid2';
 import { FilmCard } from '../film_card/film_card';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { fetchFilms } from '../reducers/films_slice';
+import { fetchFilms, setPage } from '../reducers/films_slice';
 import { PaginationButtons } from '../pagination/pagination';
 
 
 export const FilmsList =() => {
-  const  page  = useParams();
+
+
+  const { page } = useParams();
   const dispatch = useAppDispatch();
+
+
   const films = useAppSelector(state => state.filmReducer.data?.movies);
-  // dispatch(fetchFilms(Number(page.page)));
+
   useEffect  (() => {
-    dispatch(fetchFilms(Number(page.page)));
-  },[page.page, dispatch]);
+    dispatch(fetchFilms(Number(page)));
+  },[page, dispatch]);
     
   return (
     <>
       <PaginationButtons />
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{margin: '0 auto', maxWidth: '1100px'}}>
         {films?.map((film) => (
-          <Grid xs={2} sm={4} md={3}  key={film.title}>
+          <Grid xs={2} sm={4} md={3}  key={film.title} sx={{p: '5px', height: 'auto' }}>
             <FilmCard
               id={film.id}
               img={film.large_cover_image}

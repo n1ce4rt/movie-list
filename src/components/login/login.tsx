@@ -19,7 +19,7 @@ export const Login =() => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<Inputs>({mode: 'onBlur'});
+  const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<Inputs>({mode:'all'});
   const status = useAppSelector(state => state.loginReducer.isLogin);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
         

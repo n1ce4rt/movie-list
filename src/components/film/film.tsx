@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import {CssBaseline, Container, Box, Typography, CardMedia} from '@mui/material'
+import {CssBaseline, Container, Box, Typography, CardMedia} from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { fetchFilm } from '../reducers/films_slice';
 
@@ -16,7 +16,7 @@ export const Film = () => {
 
   React.useEffect(() => {
     dispatch(fetchFilm(Number(id)));
-  },[id]);
+  },[id, dispatch]);
   
   return (
     <React.Fragment>
